@@ -2114,7 +2114,7 @@ var LocalizeRouterService = /** @class */ (function () {
                 return [''];
             }
             if (snapshot.firstChild.firstChild.data && snapshot.firstChild.firstChild.data.skipRouteLocalization && (this.settings.alwaysSetPrefix || this.parser.currentLang !== this.parser.defaultLang)) {
-                return ["/"].concat(this.traverseSnapshot(snapshot.firstChild));
+                return ['/'].concat(this.traverseSnapshot(snapshot.firstChild));
             }
             if (this.settings.alwaysSetPrefix || this.parser.currentLang !== this.parser.defaultLang) {
                 return ["/" + this.parser.currentLang].concat(this.traverseSnapshot(snapshot.firstChild.firstChild));
@@ -2134,7 +2134,7 @@ var LocalizeRouterService = /** @class */ (function () {
             var _a;
         }, { outlets: {} });
         var primaryChild = snapshot.children.find(function (child) { return child.outlet === router_1.PRIMARY_OUTLET; });
-        return urlParts.concat(Object.keys(snapshot.params).length ? [snapshot.params] : [], outletChildren.length ? [outlets] : [], primaryChild ? this.traverseSnapshot(primaryChild) : []);
+        return urlParts.concat(outletChildren.length ? [outlets] : [], primaryChild ? this.traverseSnapshot(primaryChild) : []);
     };
     /**
      * Extracts new segment value based on routeConfig and url
@@ -2150,8 +2150,8 @@ var LocalizeRouterService = /** @class */ (function () {
                     .map(function (segment) { return _this.parser.translateRoute(segment.path); });
             }
             else if (snapshot.routeConfig.data && snapshot.routeConfig.data.localizeRouter) {
-                var subPathSegments_1 = snapshot.routeConfig.data.localizeRouter.path.split('/');
-                return subPathSegments_1
+                var subPathSegments = snapshot.routeConfig.data.localizeRouter.path.split('/');
+                return subPathSegments
                     .map(function (s, i) { return s.indexOf(':') === 0 ?
                     snapshot.url[i].path :
                     _this.parser.translateRoute(s); });

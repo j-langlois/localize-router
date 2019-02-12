@@ -93,7 +93,7 @@ export class LocalizeRouterService {
         return [''];
       }
       if (snapshot.firstChild.firstChild.data && snapshot.firstChild.firstChild.data.skipRouteLocalization && (this.settings.alwaysSetPrefix || this.parser.currentLang !== this.parser.defaultLang)) {
-        return ["/"].concat(this.traverseSnapshot(snapshot.firstChild));
+        return ['/'].concat(this.traverseSnapshot(snapshot.firstChild));
       }
       if (this.settings.alwaysSetPrefix || this.parser.currentLang !== this.parser.defaultLang) {
         return [`/${this.parser.currentLang}`, ...this.traverseSnapshot(snapshot.firstChild.firstChild)];
@@ -119,7 +119,6 @@ export class LocalizeRouterService {
 
     return [
       ...urlParts,
-      ...Object.keys(snapshot.params).length ? [snapshot.params] : [],
       ...outletChildren.length ? [outlets] : [],
       ...primaryChild ? this.traverseSnapshot(primaryChild) : []
     ];
@@ -143,11 +142,11 @@ export class LocalizeRouterService {
             snapshot.url[i].path :
             this.parser.translateRoute(s));  
       } else {
-        var subPathSegments = snapshot.routeConfig.path.split('/');
+        const subPathSegments = snapshot.routeConfig.path.split('/');
         return subPathSegments
             .map((s: string, i: number) => { return s.indexOf(':') === 0 ?
             snapshot.url[i].path :
-            s; })
+            s; });
       }
     }
     return [''];
