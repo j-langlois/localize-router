@@ -2134,9 +2134,7 @@ var LocalizeRouterService = /** @class */ (function () {
             var _a;
         }, { outlets: {} });
         var primaryChild = snapshot.children.find(function (child) { return child.outlet === router_1.PRIMARY_OUTLET; });
-        return [
-            urlParts
-        ].concat(Object.keys(snapshot.params).length ? [snapshot.params] : [], outletChildren.length ? [outlets] : [], primaryChild ? this.traverseSnapshot(primaryChild) : []);
+        return urlParts.concat(Object.keys(snapshot.params).length ? [snapshot.params] : [], outletChildren.length ? [outlets] : [], primaryChild ? this.traverseSnapshot(primaryChild) : []);
     };
     /**
      * Extracts new segment value based on routeConfig and url

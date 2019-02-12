@@ -118,7 +118,7 @@ export class LocalizeRouterService {
     const primaryChild = snapshot.children.find(child => child.outlet === PRIMARY_OUTLET);
 
     return [
-      urlParts,
+      ...urlParts,
       ...Object.keys(snapshot.params).length ? [snapshot.params] : [],
       ...outletChildren.length ? [outlets] : [],
       ...primaryChild ? this.traverseSnapshot(primaryChild) : []
